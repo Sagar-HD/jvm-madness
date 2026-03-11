@@ -19,6 +19,18 @@ class VectorPrac{
 	while(it.hasNext()){
 		System.out.println(it.next());
 	}
+	/*
+	addElement()
+removeElement()
+removeAllElements()
+insertElementAt()
+elementAt()
+setElementAt()
+firstElement()
+lastElement()
+elements()
+capacity()
+	*/
 	}
 	
 }
