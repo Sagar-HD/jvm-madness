@@ -5,6 +5,7 @@ class LinkedListPrac{
 	public static void main(String... args){
 		
 		List<Integer> list=new LinkedList<Integer>();
+		//uses doubly linked list 
 		// all list methods add,get,remove,size ,clear,contains,set
 		//addFirst,addLast,getFirst,getLast,removeFirst,removeLast
 		//peek,pop,push
