@@ -21,6 +21,14 @@ public class ArrayListPrac{
 	   list.add(4);
 	   list.add(5);
 	   
+	   
+	   //list sort natural order
+	   list.sort(null);
+	   // learn comparator 
+	   // list.sort( new CustomComparartor());
+	   
+	   
+	   
 	   //add with index
 	   list.add(1,4);
 	   
@@ -63,6 +71,7 @@ public class ArrayListPrac{
 		//clear
 		list.clear();
 		System.out.println(list);
+		
    }
 
 }

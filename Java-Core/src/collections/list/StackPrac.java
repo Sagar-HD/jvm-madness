@@ -23,6 +23,7 @@ search(Object o)
 		*/
 		stack.pop();
 		System.out.println(stack.empty());
+		/// search from top , in stack top is last one
 		System.out.println(stack.search(1));
 	}
 	
