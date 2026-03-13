@@ -1,0 +1,2 @@
+Rs 1000.0 deposited on :2026-03-13T09:17:59.387: balance || 1000.0
+Rs 400.0 withdrew on :2026-03-13T09:18:04.522: balance || 600.0
