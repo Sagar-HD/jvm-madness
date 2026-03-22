@@ -9,28 +9,20 @@
 </head>
 <body>
 <%
-Account account=(Account)session.getAttribute("account");
-double balance = 0;
-ArrayList<Transaction> transactions=new ArrayList<>();
-if(account==null){
-	response.sendRedirect("index.jsp");
-}
-else{
-PassbookDao passbookDao=new PassbookDao();
- balance=passbookDao.getBalance(account.getName());
- transactions=passbookDao.getTransactions(account);
-}
+double balance=(double)request.getAttribute("balance");
+ArrayList<Transaction> transactions=(ArrayList<Transaction>)request.getAttribute("transactions");
+
 %>
 <div class="dash">
 <h1>Welcome to dashboard ${account.name}</h1>
-<span>Balance = <%= balance %> </span>
+<span>Balance = ${  balance } </span>
 <form action="deposit" method="post">
 <label>Deposit money :</label>
 <input type="number" placeholder="enter amount to deposit" name="depositAmount"/>
 <button type="submit">Deposit</button>
 </form>
 <form action="withdraw" method="post">
-<label>Deposit money :</label>
+<label>Withdraw money :</label>
 <input type="number" placeholder="enter amount to withdraw" name="withdrawAmount"/>
 <button type="submit">Withdraw</button>
 </form>
