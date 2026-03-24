@@ -2,6 +2,7 @@ package com.taskmanager.servlets;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,12 +47,14 @@ public class TaskServlet extends HttpServlet {
             res.getWriter().write(new Gson().toJson(result));
             return;
         }
-
+System.out.println("user in task"+user.getId());
         TaskController taskController = new TaskController();
 
         Map<String, Object> json = new HashMap<>();
         json.put("success", true);
-        json.put("tasks", taskController.getTasks());
+        ArrayList<Task> tasks=new ArrayList<>();
+        tasks=taskController.getTasks(user);
+        json.put("tasks", tasks);
 
         res.getWriter().write(new Gson().toJson(json));
     }
@@ -86,7 +89,7 @@ public class TaskServlet extends HttpServlet {
             res.getWriter().write(new Gson().toJson(result));
             return;
         }
-
+        System.out.println("user in task"+user.getId());
         Integer user_id = user.getId();
 
         String title = req.getParameter("title");
