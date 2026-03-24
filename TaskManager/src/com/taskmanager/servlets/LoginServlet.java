@@ -40,6 +40,8 @@ public class LoginServlet extends HttpServlet {
 		if(userRes!=null){
 		HttpSession session=req.getSession();
 		session.setAttribute("user", userRes);
+		System.out.println(userRes.getId());
+		System.out.println(userRes.getEmail());
 		res.setStatus(200);
 		Map<String,Object> result=new HashMap<>();
 		result.put("success", true);
