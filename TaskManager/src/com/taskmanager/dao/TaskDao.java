@@ -76,4 +76,20 @@ public class TaskDao {
 		
 	}
 
+	public boolean deleteTask(int taskId) throws SQLException {
+	try(Connection con=Dbutil.getConnection()){
+		String query ="delete from tasks where id = ?";
+		try(PreparedStatement ps=con.prepareStatement(query)){
+			
+			ps.setInt(1,taskId);
+			int rows=ps.executeUpdate();
+			if(rows>0){
+				return true;
+			}
+		}
+				
+	}
+		return false;
+	}
+
 }

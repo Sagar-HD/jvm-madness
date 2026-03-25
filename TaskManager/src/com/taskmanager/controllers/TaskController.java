@@ -49,5 +49,25 @@ public class TaskController {
 		return null;
 	}
 	
+	
+	public boolean deleteTask(int taskId){
+		TaskDao taskDao=new TaskDao();
+		
+		try {
+		
+			
+				return 	taskDao.deleteTask(taskId);
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+			
+		}
+		
+		
+		
+		
+		return false;
+	}
 
 }

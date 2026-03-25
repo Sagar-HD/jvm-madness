@@ -49,20 +49,8 @@ System.out.println("user in task"+user.getId());
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        res.setContentType("application/json");
-        res.setCharacterEncoding("UTF-8");
 
-        HttpSession session = req.getSession(false);
-        if (session == null || session.getAttribute("user") == null) {
-            res.setStatus(401);
-            Map<String, Object> result = new HashMap<>();
-            result.put("success", false);
-            result.put("message", "unAuthorized access");
-            res.getWriter().write(new Gson().toJson(result));
-            return;
-        }
-
-        Object userObj = session.getAttribute("user");
+        Object userObj = req.getAttribute("user");
         UserRes user = null;
 
         if (userObj instanceof UserRes) {
@@ -141,4 +129,54 @@ System.out.println("user in task"+user.getId());
             res.getWriter().write(new Gson().toJson(json));
         }
     }
+    
+    protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+
+        Object userObj = req.getAttribute("user");
+        UserRes user = null;
+
+        if (userObj instanceof UserRes) {
+            user = (UserRes) userObj;
+        }
+
+        if (user == null) {
+            res.setStatus(401);
+            Map<String, Object> result = new HashMap<>();
+            result.put("success", false);
+            result.put("message", "unAuthorized access");
+            res.getWriter().write(new Gson().toJson(result));
+            return;
+        }
+      String taskString=req.getParameter("taskId");
+      if(taskString==null){
+          res.setStatus(400);
+          Map<String, Object> json = new HashMap<>();
+          json.put("success", false);
+          json.put("message", "task id required");
+          res.getWriter().write(new Gson().toJson(json));
+          return;
+      }
+      int taskId=Integer.parseInt(taskString);
+      
+        TaskController taskController = new TaskController();
+boolean isDeleteSuccess=taskController.deleteTask(taskId);
+        Map<String, Object> json = new HashMap<>();
+        if(isDeleteSuccess){
+        json.put("success", true);
+        json.put("message", "task deleted sucessfully");
+        res.setStatus(200);
+        res.getWriter().write(new Gson().toJson(json));
+        return;
+        }
+        else{
+        	 json.put("success", false);
+             json.put("message", "internal server error");
+             res.setStatus(500);
+             res.getWriter().write(new Gson().toJson(json));
+             return;	
+        }
+       
+    }
+    
 }
