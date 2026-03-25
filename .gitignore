@@ -81,3 +81,22 @@ logs/
 .env
 .env.*
 *.properties
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Build
+/bin/
+/build/
+/target/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Java libs
+*.jar
