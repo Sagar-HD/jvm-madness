@@ -85,6 +85,7 @@ logs/
 .classpath
 .project
 .settings/
+.recommenders/
 
 # Build
 /bin/
