@@ -19,20 +19,8 @@ public class TaskServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        res.setContentType("application/json");
-        res.setCharacterEncoding("UTF-8");
 
-        HttpSession session = req.getSession(false);
-        if (session == null || session.getAttribute("user") == null) {
-            res.setStatus(401);
-            Map<String, Object> result = new HashMap<>();
-            result.put("success", false);
-            result.put("message", "unAuthorized access");
-            res.getWriter().write(new Gson().toJson(result));
-            return;
-        }
-
-        Object userObj = session.getAttribute("user");
+        Object userObj = req.getAttribute("user");
         UserRes user = null;
 
         if (userObj instanceof UserRes) {
