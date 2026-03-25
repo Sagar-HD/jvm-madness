@@ -92,4 +92,22 @@ public class TaskDao {
 		return false;
 	}
 
+	public boolean updateTask(int taskId, String title) throws SQLException {
+		try(Connection con=Dbutil.getConnection()){
+		String query ="update tasks set title = ? where id=?";
+		try(PreparedStatement ps=con.prepareStatement(query)){
+			
+			ps.setString(1,title);
+			ps.setInt(2,taskId);
+			
+			int rows=ps.executeUpdate();
+			if(rows>0){
+				return true;
+			}
+		}
+				
+	}
+		return false;
+	}
+
 }

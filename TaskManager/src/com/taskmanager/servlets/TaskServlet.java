@@ -178,5 +178,39 @@ boolean isDeleteSuccess=taskController.deleteTask(taskId);
         }
        
     }
+    protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    	String taskIdString=req.getParameter("taskId");
+    	String taskTitle=req.getParameter("title");
+    	if(taskIdString==null && taskTitle==null){
+    		  res.setStatus(400);
+              Map<String, Object> json = new HashMap<>();
+              json.put("success", false);
+              json.put("message", "all fields required");
+              res.getWriter().write(new Gson().toJson(json));
+              return;	
+    	}
+    	int taskId=Integer.parseInt(taskIdString);
+    	TaskController taskController=new TaskController();
+    	boolean isSuccess=taskController.updateTask(taskId, taskTitle);
+    	if(isSuccess){
+    		res.setStatus(200);
+    		Map<String,Object> result=new HashMap<>();
+    		result.put("success", true);
+    		result.put("message", "task updated sucesfully");
+    		res.getWriter().write(new Gson().toJson(result));
+    		return;
+    	}
+    	else{
+    		res.setStatus(500);
+    		Map<String,Object> result=new HashMap<>();
+    		result.put("success", false);
+    		result.put("message", "internal server error");
+    		res.getWriter().write(new Gson().toJson(result));
+    		return;
+    	}
+    	
+    	
+    }
     
-}
+    }
+    

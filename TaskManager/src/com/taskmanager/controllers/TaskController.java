@@ -69,5 +69,24 @@ public class TaskController {
 		
 		return false;
 	}
+	public boolean updateTask(int taskId,String title){
+		TaskDao taskDao=new TaskDao();
+		
+		try {
+		
+			
+				return 	taskDao.updateTask(taskId,title);
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+			
+		}
+		
+		
+		
+		
+		return false;
+	}
 
 }
