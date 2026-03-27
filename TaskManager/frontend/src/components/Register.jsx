@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import api from '../axios';
+import { Link } from 'react-router-dom';
 const Register = () => {
     
     const [userName,setUserName]=useState("");
@@ -42,6 +43,7 @@ password:<input className='w-1/2 border border-amber-500 rounded-xl' onChange={(
 
 </div>
 </form>
+<p><Link to={"/login"}>already have an account Register</Link></p>
    </div>
 </>
   )
