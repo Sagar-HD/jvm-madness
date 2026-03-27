@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.taskmanager.dao.AuthDao;
+import com.taskmanager.model.User;
 import com.taskmanager.model.UserRes;
 
 
@@ -34,8 +35,10 @@ public class LoginServlet extends HttpServlet {
 		  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
 		    res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
 		    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-		String email=(String)req.getParameter("email");
-		String password=(String)req.getParameter("password");
+		    
+			User user1 = new Gson().fromJson(req.getReader(), User.class);
+			String email = user1.getEmail();
+			String password = user1.getPassword();
 		  res.setContentType("application/json");
 	      res.setCharacterEncoding("UTF-8");
 	      System.out.println("login request received "+email+" "+password);
