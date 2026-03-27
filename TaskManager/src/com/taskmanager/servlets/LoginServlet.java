@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +18,27 @@ import com.taskmanager.model.UserRes;
 
 
 @WebServlet("/login")
+@MultipartConfig
 public class LoginServlet extends HttpServlet {
-	
+	 private void setCorsHeaders(HttpServletResponse res) {
+	        res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+	        res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+	        res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+	    }
+	  @Override
+	    protected void doOptions(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	        setCorsHeaders(res);
+	        res.setStatus(HttpServletResponse.SC_OK);
+	    }
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+		    res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+		    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 		String email=(String)req.getParameter("email");
 		String password=(String)req.getParameter("password");
 		  res.setContentType("application/json");
 	      res.setCharacterEncoding("UTF-8");
+	      System.out.println("login request received "+email+" "+password);
 		if( email==null || password==null  ){
 			res.setStatus(400);
 			Map<String, Object> result = new HashMap<>();
