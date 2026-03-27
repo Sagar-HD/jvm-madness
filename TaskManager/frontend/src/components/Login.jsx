@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import api from '../axios';
+import { Link } from 'react-router-dom';
+
 const Login = () => {
  
     const [email,setEmail]=useState("");
@@ -34,7 +36,7 @@ password:<input className='w-1/2 border border-amber-500 rounded-xl' onChange={(
 }}  value={password} type="password" name="password" id="" />
 <div>
 <button type="submit" className='bg-blue-600 text-white border border-white rounded-2xl  px-6 py-3'>submit</button>
-
+<p><Link to={"/"}>dont have an account Register</Link></p>
 </div>
 </form>
    </div>
