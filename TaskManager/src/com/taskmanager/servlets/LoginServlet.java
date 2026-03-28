@@ -35,8 +35,8 @@ public class LoginServlet extends HttpServlet {
 		  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
 		    res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
 		    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-		    
-			User user1 = new Gson().fromJson(req.getReader(), User.class);
+		    Gson gson=new Gson();
+			User user1 = gson.fromJson(req.getReader(), User.class);
 			String email = user1.getEmail();
 			String password = user1.getPassword();
 		  res.setContentType("application/json");

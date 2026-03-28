@@ -2,9 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 import api from '../axios';
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
- 
+ const navigate=useNavigate();
     const [email,setEmail]=useState("");
      const [password,setPassword]=useState("");
        const [formData, setFormData] = useState({
@@ -18,6 +18,9 @@ const Login = () => {
       
        const res=await api.post("/login",formData)
        console.log(res);
+       if(res.success){
+navigate("/dashboard");
+       }
     }
   return (
     <>
