@@ -32,9 +32,14 @@ public class LoginServlet extends HttpServlet {
 	        res.setStatus(HttpServletResponse.SC_OK);
 	    }
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		if ("OPTIONS".equalsIgnoreCase(req.getMethod())) {
+		    res.setStatus(HttpServletResponse.SC_OK);
+		    return;
+		}
 		  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
 		    res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
 		    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+		    res.setHeader("Access-Control-Allow-Credentials", "true");
 		    Gson gson=new Gson();
 			User user1 = gson.fromJson(req.getReader(), User.class);
 			String email = user1.getEmail();

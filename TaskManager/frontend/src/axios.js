@@ -4,7 +4,9 @@ const api = axios.create({
   baseURL: "http://localhost:8081/TaskManager",
   headers: {
     "Content-Type": "application/json",
+   
   },
+     withCredentials: true
 });
 
 export default api;

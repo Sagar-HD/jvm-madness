@@ -18,8 +18,15 @@ const Login = () => {
       
        const res=await api.post("/login",formData)
        console.log(res);
-       if(res.success){
+       if(res.data.success){
+         alert("login sucess");
+        console.log(res.data.user);
+        localStorage.setItem("user",JSON.stringify(res.data.user));
 navigate("/dashboard");
+
+       }
+       else{
+        alert("inavlid creds");
        }
     }
   return (

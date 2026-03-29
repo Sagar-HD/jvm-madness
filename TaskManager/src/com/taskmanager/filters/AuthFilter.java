@@ -21,14 +21,22 @@ import com.google.gson.Gson;
 public class AuthFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	
 		HttpServletRequest req=(HttpServletRequest) request;
 		HttpServletResponse res=(HttpServletResponse) response;
+		if ("OPTIONS".equalsIgnoreCase(req.getMethod())) {
+		    res.setStatus(HttpServletResponse.SC_OK);
+		    return;
+		}
 	    res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");
-
+        res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+        res.setHeader("Access-Control-Allow-Credentials", "true");
+	    res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+	    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
         HttpSession session = req.getSession(false);
         if (session == null || session.getAttribute("user") == null) {
-        	System.out.println("request interupted by filer unauthorized");
+        	System.out.println("request interupted by filter unauthorized");
             res.setStatus(401);
             Map<String, Object> result = new HashMap<>();
             result.put("success", false);

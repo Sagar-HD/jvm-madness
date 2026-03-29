@@ -43,7 +43,7 @@ password:<input className='w-1/2 border border-amber-500 rounded-xl' onChange={(
 
 </div>
 </form>
-<p><Link to={"/login"}>already have an account Register</Link></p>
+<p className='m-auto '><Link to={"/login"}>already have an account Login</Link></p>
    </div>
 </>
   )
