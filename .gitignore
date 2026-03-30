@@ -1,29 +1,14 @@
-# Compiled class file
+# =========================
+# JAVA
+# =========================
 *.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
 *.nar
 *.ear
-*.zip
-*.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
 # =========================
-# Maven
+# MAVEN
 # =========================
 target/
 pom.xml.tag
@@ -35,110 +20,72 @@ dependency-reduced-pom.xml
 buildNumber.properties
 
 # =========================
-# Eclipse
+# ECLIPSE
 # =========================
 .metadata/
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-
-.settings/
 .classpath
 .project
+.settings/
 .factorypath
-
-# =========================
-# Java / Servlet
-# =========================
-*.class
-*.log
-
-# =========================
-# OS files
-# =========================
-.DS_Store
-Thumbs.db
-
-# =========================
-# IDE (just in case)
-# =========================
-.idea/
-*.iml
-
-# =========================
-# Logs
-# =========================
-logs/
-*.log
-
-# =========================
-# Environment files (DB creds etc)
-# =========================
-.env
-.env.*
-*.properties
-# Eclipse
-.classpath
-.project
-.settings/
 .recommenders/
 
-# Build
-/bin/
-/build/
-/target/
-
-# Logs
-*.log
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Java libs
-*.jar
-# dependencies
+# =========================
+# REACT / NODE
+# =========================
 node_modules/
-
-# production build
 dist/
 build/
+coverage/
 
-# environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# logs
-logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# OS files
+.cache/
+.parcel-cache/
+vite.svg
+
+# =========================
+# IDE (GENERAL)
+# =========================
+.idea/
+*.iml
+.vscode/
+
+# =========================
+# LOGS
+# =========================
+logs/
+*.log
+hs_err_pid*
+replay_pid*
+
+# =========================
+# ENV FILES
+# =========================
+.env
+.env.*
+*.local
+*.properties
+
+# =========================
+# OS FILES
+# =========================
 .DS_Store
 Thumbs.db
 
-# IDE/editor folders
-.vscode/
-.idea/
+# =========================
+# TEMP FILES
+# =========================
+*.tmp
+*.swp
+*.bak
+*~.nib
 
-# optional cache
-.cache/
-.parcel-cache/
-
-# Vite specific
-vite.svg
-
-# testing
-coverage/
-
-# misc
-*.local
+# =========================
+# BUILD DIRECTORIES
+# =========================
+/bin/
+/build/
+/target/
+/dist/
