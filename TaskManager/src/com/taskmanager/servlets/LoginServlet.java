@@ -26,11 +26,11 @@ public class LoginServlet extends HttpServlet {
 	        res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 	        res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 	    }
-	  @Override
-	    protected void doOptions(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-	        setCorsHeaders(res);
-	        res.setStatus(HttpServletResponse.SC_OK);
-	    }
+	 @Override
+	  protected void doOptions(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	      setCorsHeaders(res);
+	      res.setStatus(HttpServletResponse.SC_OK);
+	  }
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		if ("OPTIONS".equalsIgnoreCase(req.getMethod())) {
 		    res.setStatus(HttpServletResponse.SC_OK);
