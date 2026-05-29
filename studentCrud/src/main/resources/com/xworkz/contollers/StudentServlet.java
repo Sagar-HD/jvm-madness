@@ -5,7 +5,9 @@ import java.io.PrintWriter;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-
+import com.xworkz.service.StudentService;
+import com.xworkz.service.impl.StudentServiceImpl;
+import com.xworkz.dto.StudentDTO;
 @WebServlet("/student")
 public class StudentServlet extends HttpServlet {
 
@@ -17,7 +19,21 @@ public class StudentServlet extends HttpServlet {
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
+          
+        StudentService studentService=new StudentServiceImpl();
+        StudentDTO data=new StudentDTO(1,"sagar",3);
+        studentSerice.saveData(data);
+        out.println(data.getName());
+    }
+    protected void doPost(
+            HttpServletRequest request,
+            HttpServletResponse response)
+            throws IOException {
 
-        out.println("<h1>Hello Servlet</h1>");
+        response.setContentType("text/html");
+
+        PrintWriter out = response.getWriter();
+
+        out.println("data saved ...");
     }
 }
