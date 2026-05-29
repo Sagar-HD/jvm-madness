@@ -21,21 +21,21 @@ public class StudentDAO {
                             "sagarhd");
 
             String sql =
-                    "insert into student(name,email,phone) values(?,?,?)";
+                    "INSERT INTO student(id, name, total_marks) VALUES (?, ?, ?)";
 
             PreparedStatement statement =
                     connection.prepareStatement(sql);
 
-            statement.setString(1, data.getName());
-            statement.setString(2, data.getEmail());
-            statement.setLong(3, data.getPhone());
+            statement.setInt(1, data.getId());
+            statement.setString(2, data.getName());
+            statement.setInt(3, data.getTotalMarks());
 
-            statement.executeUpdate();
+            int rows = statement.executeUpdate();
+
+            System.out.println("Rows inserted: " + rows);
 
             statement.close();
             connection.close();
-
-            System.out.println("Data Saved");
 
         } catch (Exception e) {
             e.printStackTrace();
